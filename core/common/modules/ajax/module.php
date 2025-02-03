@@ -266,7 +266,7 @@ class Module extends BaseModule {
 			ob_end_clean();
 		}
 
-		if ( function_exists( 'gzencode' ) ) {
+		if ( ! headers_sent() && function_exists( 'gzencode' ) ) {
 			$response = gzencode( $json );
 
 			header( 'Content-Type: application/json; charset=utf-8' );
